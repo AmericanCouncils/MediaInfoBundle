@@ -1,0 +1,23 @@
+{
+    "name": "ac/media-info-bundle",
+    "type": "symfony-bundle",
+    "description": "Provides a wrapper for the mediainfo command line utility.",
+    "keywords": ["multimedia", "metadata"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Evan Villemez",
+            "email": "evan.villemez@americancouncils.org"
+        }
+    ],
+    "target-dir": "AC/MediaInfoBundle",
+    "autoload": {
+        "psr-0": { "AC\\MediaInfoBundle": "" }
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "symfony/framework-bundle": ">=2.1",
+        "symfony/process": ">=2.1",
+        "symfony/yaml": ">=2.1"
+    }
+}
