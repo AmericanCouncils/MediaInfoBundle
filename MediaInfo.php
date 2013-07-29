@@ -29,10 +29,9 @@ class MediaInfo
      * Scans a file to return any structured metadata.
      *
      * @param string $filepath Path to file to analyze
-     * @param string $format Can be one of array/xml/json/yaml, defaults to array
-     * @return array|string
+     * @return array
      */
-    public function scan($filepath, $format='array')
+    public function scan($filepath)
     {
         $proc = new Process(sprintf('%s %s --Output=XML --Full', $this->path, $filepath));
         $proc->run();

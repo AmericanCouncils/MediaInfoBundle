@@ -16,7 +16,6 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class MediaInfoCommand extends ContainerAwareCommand
 {
-    
     protected function configure()
     {
         $this->setName('mediainfo:scan')
@@ -30,7 +29,7 @@ class MediaInfoCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $format = $input->getOption('format');
-        if (!in_array($format, array('json','yaml', 'array'))) {
+        if (!in_array($format, array('json','yaml','array'))) {
             throw new \InvalidArgumentException("Invalid format chosen.");
         }
                 
