@@ -2,7 +2,7 @@
     "name": "ac/media-info-bundle",
     "type": "symfony-bundle",
     "description": "Provides a wrapper for the mediainfo command line utility.",
-    "keywords": ["multimedia", "metadata"],
+    "keywords": ["mediainfo", "multimedia", "metadata"],
     "license": "MIT",
     "authors": [
         {

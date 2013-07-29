@@ -57,21 +57,6 @@ class MediaInfo
             }
         }
 
-        if ('xml' === $format) {
-            return $result;
-        }
-        
-        if ('array' === $format) {
-            return $data;
-        }
-        
-        if ('json' === $format) {
-            return json_encode($data);
-        }
-        
-        if ('yaml' === $format) {
-            $dumper = new Dumper();
-            return $dumper->dump($data, 5);
-        }
+        return $data;
     }
 }

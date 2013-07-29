@@ -30,7 +30,7 @@ class MediaInfoCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $format = $input->getOption('format');
-        if (!in_array($format, array('xml','json','yaml', 'array'))) {
+        if (!in_array($format, array('json','yaml', 'array'))) {
             throw new \InvalidArgumentException("Invalid format chosen.");
         }
                 
@@ -40,6 +40,15 @@ class MediaInfoCommand extends ContainerAwareCommand
         
         if ('array' === $format) {
             $data = print_r($data, true);
+        }
+        
+        if ('json' === $format) {
+            $data = json_encode($data);
+        }
+        
+        if ('yaml' === $format) {
+            $dumper = new Dumper();
+            $data = $dumper->dump($data, 5);
         }
         
         $output->write($data);
