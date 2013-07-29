@@ -34,7 +34,7 @@ class MediaInfo
      */
     public function scan($filepath, $format='array')
     {
-        $proc = new Process(sprintf('%s %s --Output=XML', $this->path, $filepath));
+        $proc = new Process(sprintf('%s %s --Output=XML --Full', $this->path, $filepath));
         $proc->run();
         
         if (!$proc->isSuccessful()) {
