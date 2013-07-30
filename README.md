@@ -4,6 +4,31 @@ This bundle provides a wrapper around the command line utility [mediainfo](http:
 
 For this bundle to work you must, of course, have `mediainfo` installed on your system.
 
+## Installation ##
+
+Require in your `composer.json`:
+
+```json
+{
+  "require": {
+    "ac/media-info-bundle": "~1.1.0"
+  }
+}
+```
+
+Add to your `AppKernel.php`;
+
+```php
+public function registerBundles()
+{
+    return array(
+    //...
+        new AC\MediaInfoBundle\ACMediaInfoBundle(),
+    //...
+    );
+}
+```
+
 ## Configuration ##
 
 Configuration is very simple, you only need to provide the path to the `mediainfo` executable:
