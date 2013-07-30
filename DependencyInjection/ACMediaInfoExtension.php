@@ -14,11 +14,9 @@ class ACMediaInfoExtension extends Extension
         //load services
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
-        
-        //set configs
+
+        //set config
         $config = $this->processConfiguration(new Configuration(), $configs);
-        foreach ($config as $key => $val) {
-            $container->setParameter('ac_media_info.'.$key, $val);
-        }
+        $container->setParameter('ac_media_info.path', $config['path']);
     }
 }

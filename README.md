@@ -9,8 +9,8 @@ For this bundle to work you must, of course, have `mediainfo` installed on your 
 Configuration is very simple, you only need to provide the path to the `mediainfo` executable:
 
 ```yml
-ac_mediainfo:
-    path: /path/to/mediainfo
+ac_media_info:
+    path: /usr/bin/mediainfo
 ```
 
 ## Usage ##
@@ -166,7 +166,7 @@ Array
 
 ## Command ##
 
-The `mediainfo:scan` command will let you export the results of a scan in other formats.
+The `mediainfo:scan` command will let you export the results of a scan in yaml or json.
 
-    app/console mediainfo:scan --format=yaml /path/to/file.webm
+    app/console mediainfo:scan --format=json /path/to/file.webm
     
