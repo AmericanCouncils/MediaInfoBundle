@@ -15,11 +15,11 @@ class MediaInfo
     protected $path;
 
     /**
-     * Constructor requires path to mediainfo executable.
+     * Constructor accepts path to mediainfo executable.
      *
      * @param string $path Path to executable
      */
-    public function __construct($path)
+    public function __construct($path = 'mediainfo')
     {
         $this->path = $path;
     }
@@ -51,7 +51,8 @@ class MediaInfo
             $data['file'][strtolower($track['type'])] = array();
 
             foreach ($track as $key => $val) {
-                $data['file'][strtolower($track['type'])][strtolower($key)] = (string) $val;
+                $data['file'][strtolower($track['type'])][strtolower($key)] = isset($data['file'][strtolower($track['type'])][strtolower($key)]) ? $data['file'][strtolower($track['type'])][strtolower($key)] : array();
+                $data['file'][strtolower($track['type'])][strtolower($key)][] = (string) $val;
             }
         }
 
