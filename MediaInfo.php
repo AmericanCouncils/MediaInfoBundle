@@ -3,7 +3,6 @@
 namespace AC\MediaInfoBundle;
 
 use Symfony\Component\Process\Process;
-use Symfony\Component\Yaml\Dumper;
 
 /**
  * Wraps the mediainfo utility to output other formats for programming against.
