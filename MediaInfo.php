@@ -45,14 +45,31 @@ class MediaInfo
         $xml = simplexml_load_string($result);
         $data = array();
         $data['version'] = (string) $xml['version'];
-        $data['file'] = array();
 
         foreach ($xml->File->track as $track) {
-            $data['file'][strtolower($track['type'])] = array();
+            $trackType = strtolower($track['type']);
+            $trackId = isset($track['streamid']) ? $track['streamid'] : 1;
+            $trackId = (string)$trackId;
 
-            foreach ($track as $key => $val) {
-                $data['file'][strtolower($track['type'])][strtolower($key)] = isset($data['file'][strtolower($track['type'])][strtolower($key)]) ? $data['file'][strtolower($track['type'])][strtolower($key)] : array();
-                $data['file'][strtolower($track['type'])][strtolower($key)][] = (string) $val;
+            $trackData = [];
+            foreach ($track as $rawKey => $rawVal) {
+                $key = strtolower($rawKey);
+                $val = (string)$rawVal;
+
+                # This sometimes doesn't match streamid, so let's ignore it
+                if ($key == 'stream_identifier') { continue; }
+
+                if (!array_key_exists($key, $trackData)) {
+                    $trackData[$key] = array($val);
+                } elseif (!in_array($val, $trackData[$key])) {
+                    $trackData[$key][] = $val;
+                }
+            }
+
+            if ($trackType == 'general') {
+                $data['file']['general'] = $trackData;
+            } else {
+                $data['file'][$trackType][$trackId] = $trackData;
             }
         }
 
